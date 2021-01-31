@@ -9,10 +9,10 @@ const PORT = process.env.PORT || 4001;
 
 app.use(express.static("public"));
 
-// app.get("/index", (req, res, next) => {
-//   res.send(qoutes);
-// });
-
+// Starts the server on your local host
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
+
+const quotesRouter = require("./quotes.js");
+app.use("/api/quotes", quotesRouter);
