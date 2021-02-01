@@ -26,4 +26,15 @@ quotesRouter.get("/", (req, res, next) => {
   }
 });
 
+quotesRouter.post("/", (req, res, next) => {
+  if (!req.query.quote && !req.query.person) {
+    res.status(400).send();
+  } else {
+    const person = req.query.person;
+    const quote = req.query.quote;
+    quotes.push({ person: person, quote: quote });
+    res.send({ quote: { person: person, quote: quote } });
+  }
+});
+
 module.exports = quotesRouter;
